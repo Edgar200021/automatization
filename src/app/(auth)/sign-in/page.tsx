@@ -2,6 +2,7 @@ import { SignInForm } from '@/components/forms/SignInForm'
 import Image from 'next/image'
 import { Suspense } from 'react'
 
+export const revalidate = 0
 export default function SignIn() {
   return (
     <div className="flex flex-1 min-h-[100svh]">
