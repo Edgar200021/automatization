@@ -20,6 +20,5 @@ export const ProtectedRoute = ({ children }: { children: ReactNode }) => {
       </div>
     )
 
-
   return session.data?.user ? children : <Navigate to="/sign-in" />
 }
