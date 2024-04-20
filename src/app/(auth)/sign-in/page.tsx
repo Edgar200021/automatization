@@ -16,7 +16,7 @@ export default function SignIn() {
 
           <div className="mt-10">
             <div>
-              <Suspense>
+              <Suspense >
                 <SignInForm />
               </Suspense>
             </div>
