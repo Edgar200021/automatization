@@ -1,5 +1,6 @@
 'use client'
 
+import { cn } from '@/utils/cn'
 import {
   Dispatch,
   ReactElement,
@@ -7,8 +8,6 @@ import {
   SetStateAction,
   useState,
 } from 'react'
-import { cn } from '../../utils/cn.ts'
-
 interface Props {
   className?: string
   collapsed?: boolean
