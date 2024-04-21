@@ -16,9 +16,9 @@ export default function DashboardLayout({
       <div className="col-span-1">
         <Sidebar />
       </div>
-      {/*<ProtectedRoute>*/}
+      <ProtectedRoute>
         <div className="col-span-4 py-10">{children}</div>
-      {/*</ProtectedRoute>*/}
+      </ProtectedRoute>
     </div>
   )
 }
