@@ -67,13 +67,6 @@ export const SignInForm = () => {
         <div className="">
           <div className="text-sm leading-6 flex flex-col gap-y-3">
             <Link
-              href="/forgot-password"
-              className="font-semibold text-dark  hover:text-indigo-500"
-            >
-              Մոռացել եք գաղտնաբա՞ռը
-            </Link>
-
-            <Link
               href="/sign-up"
               className="font-semibold text-dark  hover:text-indigo-500"
             >
