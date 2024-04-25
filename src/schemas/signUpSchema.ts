@@ -6,7 +6,7 @@ export const signUpSchema = z
     fullName: z
       .string()
       .refine(
-        value => /^[a-zA-Z]+[-'s]?[a-zA-Z ]+$/.test(value ?? ''),
+        value => /^[a-zA-Zա-ֆԱ-Ֆ]+[-'s]?[a-zA-Zա-ֆԱ-Ֆ ]+$/.test(value ?? ''),
         ' Անունը պետք է պարունակի միայն այբուբենի տառերը'
       )
       .refine(

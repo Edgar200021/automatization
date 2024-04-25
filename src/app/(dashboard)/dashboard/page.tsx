@@ -4,11 +4,9 @@ import { Employee } from '@/db/models/employee'
 import { User } from '@/db/models/user'
 import { connectDb } from '@/db/mongoose'
 import { getServerSession } from 'next-auth'
-import { getSession } from 'next-auth/react'
 
 export default async function Home() {
-	const session = await getServerSession()
-//  const session = await getSession()
+  const session = await getServerSession()
   await connectDb()
   const user = await User.findOne({ email: session?.user?.email! })
   const data = await Company.findOne({ owner: user._id }).populate({
