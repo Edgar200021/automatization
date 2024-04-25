@@ -5,11 +5,11 @@ export const addEmployeeSchema = z.object({
   fullName: z
     .string()
     .refine(
-      value => /^[a-zA-Z]+[-'s]?[a-zA-Z ]+$/.test(value ?? ''),
+      value => /^[a-zA-Zա-ֆԱ-Ֆ]+[-'s]?[a-zA-Zա-ֆԱ-Ֆ ]+$/.test(value ?? ''),
       ' Անունը պետք է պարունակի միայն այբուբենի տառերը'
     )
     .refine(
-      value => /^[a-zA-Z]+\s+[a-zA-Z]+$/.test(value ?? ''),
+      value => /^[a-zA-Zա-ֆԱ-Ֆ]+\s+[a-zA-Zա-ֆԱ-Ֆ]+$/.test(value ?? ''),
       'Մուտքագրեք և անունը, և ազգանունը'
     ),
   department: z.string(),

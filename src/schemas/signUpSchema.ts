@@ -10,7 +10,7 @@ export const signUpSchema = z
         ' Անունը պետք է պարունակի միայն այբուբենի տառերը'
       )
       .refine(
-        value => /^[a-zA-Z]+\s+[a-zA-Z]+$/.test(value ?? ''),
+        value => /^[a-zA-Zա-ֆԱ-Ֆ]+\s+[a-zA-Zա-ֆԱ-Ֆ]+$/.test(value ?? ''),
         'Մուտքագրեք և անունը, և ազգանունը'
       ),
     password: z
