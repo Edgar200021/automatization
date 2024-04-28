@@ -1,7 +1,5 @@
 import { TEmploye } from '@/db/models/employee'
 import { CreateEmployee } from '../CreateEmployee/CreateEmployee'
-import { Button } from '../ui/Button'
-import { CloseIcon } from '../ui/CloseIcon'
 import { DeleteEmployeeForm } from '../forms/DeleteEmployeeForm'
 
 const people = [
@@ -86,23 +84,23 @@ export const UsersTable = ({ employees }: Props) => {
                 <tbody className="divide-y divide-gray-200">
                   {employees.map(employee => (
                     <tr key={employee.email}>
-                      <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">
+                      <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0 capitalize">
                         {employee.fullName}
                       </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500 capitalize">
                         {employee.position}
                       </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500 capitalize">
                         {employee.department}
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
                         {employee.email}
                       </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500 capitalize">
                         {employee.salary}
                       </td>
 
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500 ">
                         {new Intl.DateTimeFormat('hy-AM', {
                           year: 'numeric',
                           month: 'long',
@@ -110,8 +108,8 @@ export const UsersTable = ({ employees }: Props) => {
                         }).format(employee.createdAt)}
                       </td>
 
-                      <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
-                       <DeleteEmployeeForm employeeEmail={employee.email}/>
+                      <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0 capitalize">
+                        <DeleteEmployeeForm employeeEmail={employee.email} />
                       </td>
                     </tr>
                   ))}
