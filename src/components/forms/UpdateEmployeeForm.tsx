@@ -2,6 +2,7 @@
 
 import { updateEmployee } from '@/actions /updateEmployee'
 import { useSession } from 'next-auth/react'
+import { Button } from '../ui/Button'
 
 interface Props {
   employeeEmail: string
@@ -18,12 +19,15 @@ export const UpdateEmployeeForm = ({
 
   return (
     <form action={updateEmployee.bind(null, data!.user!.email!, employeeEmail)}>
-      <button
+      <Button
+        type="submit"
         disabled={disabled}
+        variant="clear"
         className="w-5 h-5 border-[1px] border-black flex items-center justify-center disabled:cursor-not-allowed cursor-pointer"
+        withSpinner={true}
       >
         {checked && <span>&#10003;</span>}
-      </button>
+      </Button>
     </form>
   )
 }

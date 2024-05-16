@@ -2,6 +2,7 @@
 import { cn } from '@/utils/cn'
 import { ComponentProps } from 'react'
 import { useFormStatus } from 'react-dom'
+import { ClipLoader } from 'react-spinners'
 
 const variants = {
   primary:
@@ -13,16 +14,22 @@ const variants = {
 }
 interface Props extends ComponentProps<'button'> {
   variant?: keyof typeof variants
+  withSpinner?: boolean
 }
 
 export const Button = ({
   className,
   children,
   variant = 'primary',
+  withSpinner,
   type,
   ...otherProps
 }: Props) => {
   const { pending } = useFormStatus()
+
+
+  if (type === 'submit' && withSpinner && pending)
+    return <ClipLoader color="#000000" size={20} loading={pending} />
 
   return (
     <button

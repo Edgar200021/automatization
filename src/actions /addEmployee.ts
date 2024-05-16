@@ -52,9 +52,6 @@ export const addEmployee = async (
     const employee = await Employee.create({
       ...data,
       company: company._id,
-      createdAt: new Date('2024-05-12T14:56:48.616+00:00'),
-      monthlyEarnings: 70000,
-      workingDaysPerMonth: 7,
     })
     company.employees.push(employee._id)
     await company.save()
