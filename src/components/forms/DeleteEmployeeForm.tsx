@@ -13,7 +13,7 @@ export const DeleteEmployeeForm = ({ employeeEmail }: Props) => {
   const { data } = useSession()
   return (
     <form action={deleteEmployee.bind(null, data!.user!.email!, employeeEmail)}>
-      <Button className="bg-red-300 rounded-xl p-1 " variant="clear">
+      <Button className="bg-red-300 rounded-xl p-1 cursor-pointer " variant="clear">
         <CloseIcon />
       </Button>
     </form>

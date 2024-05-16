@@ -12,13 +12,16 @@ import { revalidatePath } from 'next/cache'
 export const addEmployee = async (
   userEmail: string,
   formState: Partial<
-    FormState<Omit<AddEmployeeSchema, 'salary'> & { salary: string }>
+    FormState<Omit<AddEmployeeSchema, 'dailySalary'> & { dailySalary: string }>
   >,
   formData: FormData
 ): Promise<
   Partial<
     FormState<
-      Omit<AddEmployeeSchema, 'salary'> & { salary: string; status: string }
+      Omit<AddEmployeeSchema, 'dailySalary'> & {
+        dailySalary: string
+        status: string
+      }
     >
   >
 > => {
@@ -46,7 +49,13 @@ export const addEmployee = async (
         email: `Նման էլ.փոստի հասցե ունեցող աշխատող արդեն գոյություն ունի`,
       }
 
-    const employee = await Employee.create({ ...data, company: company._id })
+    const employee = await Employee.create({
+      ...data,
+      company: company._id,
+      createdAt: new Date('2024-05-12T14:56:48.616+00:00'),
+      monthlyEarnings: 70000,
+      workingDaysPerMonth: 7,
+    })
     company.employees.push(employee._id)
     await company.save()
   } catch (error) {

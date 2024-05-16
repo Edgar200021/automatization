@@ -1,6 +1,7 @@
 import { TEmploye } from '@/db/models/employee'
 import { CreateEmployee } from '../CreateEmployee/CreateEmployee'
 import { DeleteEmployeeForm } from '../forms/DeleteEmployeeForm'
+import { UpdateEmployeeForm } from '../forms/UpdateEmployeeForm'
 
 const people = [
   {
@@ -63,14 +64,14 @@ export const UsersTable = ({ employees }: Props) => {
                       scope="col"
                       className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                     >
-                      Աշխատավարձ
+                      Օրական աշխատավարձ
                     </th>
 
                     <th
                       scope="col"
                       className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
                     >
-                      Աշխատանքի ընդունման ամսաթիվ
+                      Այս ամսվա եկամուտը
                     </th>
 
                     <th
@@ -82,37 +83,56 @@ export const UsersTable = ({ employees }: Props) => {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200">
-                  {employees.map(employee => (
-                    <tr key={employee.email}>
-                      <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0 capitalize">
-                        {employee.fullName}
-                      </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500 capitalize">
-                        {employee.position}
-                      </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500 capitalize">
-                        {employee.department}
-                      </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {employee.email}
-                      </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500 capitalize">
-                        {employee.salary}
-                      </td>
+                  {employees.map(employee => {
+                    const createdMonth = new Date(
+                        employee.createdAt
+                      ).getMonth(),
+                      createdDay = new Date(employee.createdAt).getDate()
 
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500 ">
-                        {new Intl.DateTimeFormat('hy-AM', {
-                          year: 'numeric',
-                          month: 'long',
-                          day: '2-digit',
-                        }).format(employee.createdAt)}
-                      </td>
+                    const disabled =
+                      new Date().getMonth() === createdMonth &&
+                      new Date().getDate() === createdDay
+                    const checked = disabled
+                      ? false
+                      : employee.updatedAt &&
+                        new Date().getDate() ===
+                          new Date(employee.updatedAt).getDate()
+                      ? true
+                      : false
 
-                      <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0 capitalize">
-                        <DeleteEmployeeForm employeeEmail={employee.email} />
-                      </td>
-                    </tr>
-                  ))}
+                    return (
+                      <tr key={employee.email}>
+                        <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0 capitalize">
+                          {employee.fullName}
+                        </td>
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500 capitalize">
+                          {employee.position}
+                        </td>
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500 capitalize">
+                          {employee.department}
+                        </td>
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                          {employee.email}
+                        </td>
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500 capitalize">
+                          {employee.dailySalary}
+                        </td>
+
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500 ">
+                          {employee.monthlyEarnings}
+                        </td>
+
+                        <td className="relative flex items-center gap-x-4  whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0 capitalize">
+                          <UpdateEmployeeForm
+                            checked={checked}
+                            disabled={disabled}
+                            employeeEmail={employee.email}
+                          />
+                          <DeleteEmployeeForm employeeEmail={employee.email} />
+                        </td>
+                      </tr>
+                    )
+                  })}
                 </tbody>
               </table>
             )}

@@ -14,9 +14,9 @@ export const addEmployeeSchema = z.object({
     ),
   department: z.string(),
   position: z.string(),
-  salary: z.coerce
+  dailySalary: z.coerce
     .number()
-    .gte(70000, 'Նվազագույն աշխատավարձը պետք է գերազանցի 70000 դրամը'),
+    .gte(3000, 'Նվազագույն օրական աշխատավարձը պետք է գերազանցի 3000 դրամը'),
 })
 
 export type AddEmployeeSchema = z.infer<typeof addEmployeeSchema>

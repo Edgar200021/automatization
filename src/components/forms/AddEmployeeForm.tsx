@@ -17,7 +17,6 @@ export const AddEmployeeForm = ({ onClose, userEmail }: Props) => {
   useEffect(() => {
     if (!onClose) return
     if (state.status === 'done') {
-      console.log('true')
       onClose?.()
     }
   }, [onClose, state.status])
@@ -121,23 +120,23 @@ export const AddEmployeeForm = ({ onClose, userEmail }: Props) => {
 
           <div>
             <label
-              htmlFor="salary"
+              htmlFor="dailySalary"
               className="block text-sm font-medium leading-6 text-gray-900"
             >
-              Աշխատավարձ
+              Օրական աշխատավարձ
             </label>
             <div className="mt-2">
               <input
                 id="position"
-                name="salary"
+                name="dailySalary"
                 type="number"
                 pattern="[0-9]*"
                 required
                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 px-3"
               />
             </div>
-            <Collapsible collapsed={!!state.salary?.trim()}>
-              <span className="text-red-500">{state.salary}</span>
+            <Collapsible collapsed={!!state.dailySalary?.trim()}>
+              <span className="text-red-500">{state.dailySalary}</span>
             </Collapsible>
           </div>
 
